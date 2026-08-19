@@ -1,19 +1,28 @@
-const { GoogleGenAI } = require('@google/genai');
 const { buildSystemInstruction } = require('./prompt');
+
+let _genaiModule = null;
+async function getGenAI() {
+  if (!_genaiModule) _genaiModule = await import('@google/genai');
+  return _genaiModule;
+}
 
 // Check ai.google.dev for the current model lineup.
 const MODEL = 'gemini-2.5-flash';
 
 let client = null;
-function getClient() {
-  if (!client) client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+async function getClient() {
+  if (!client) {
+    const { GoogleGenAI } = await getGenAI();
+    client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  }
   return client;
 }
 
 // Same interface as providers/anthropic.js:
 //   generateAnswer({ prompt, screenshotBase64, gameContext }) -> Promise<string>
 async function generateAnswer({ prompt, screenshotBase64, gameContext }) {
-  const response = await getClient().models.generateContent({
+  const ai = await getClient();
+  const response = await ai.models.generateContent({
     model: MODEL,
     contents: [
       {

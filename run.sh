@@ -20,4 +20,5 @@ fi
 export LLM_PROVIDER="${LLM_PROVIDER:-gemini}"
 
 npm install --silent
+npx electron-rebuild -m . -o active-win
 npm start
