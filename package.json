@@ -1,0 +1,15 @@
+{
+  "name": "game-copilot-overlay",
+  "version": "0.1.0",
+  "description": "Hotkey-triggered game copilot overlay: screenshot + prompt -> LLM -> answer, shown over any game window.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@google/genai": "^0.15.0",
+    "active-win": "^9.0.0",
+    "electron": "^31.0.0"
+  }
+}
