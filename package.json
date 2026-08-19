@@ -2,7 +2,18 @@
   "name": "game-copilot-overlay",
   "version": "0.1.0",
   "description": "Hotkey-triggered game copilot overlay: screenshot + prompt -> LLM -> answer, shown over any game window.",
-  "main": "main.js",
+  "main": "src/main/index.js",
+  "bin": {
+    "game-copilot-overlay": "./bin/game-copilot-overlay.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "assets"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "electron ."
   },
