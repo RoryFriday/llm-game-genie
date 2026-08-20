@@ -31,7 +31,7 @@ async function generateAnswer({ prompt, screenshotBase64, gameContext }) {
           { type: 'text', text: prompt },
           {
             type: 'image',
-            source: { type: 'base64', media_type: 'image/png', data: screenshotBase64 },
+            source: { type: 'base64', media_type: 'image/jpeg', data: screenshotBase64 },
           },
         ],
       },

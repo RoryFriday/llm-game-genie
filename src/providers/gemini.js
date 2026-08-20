@@ -7,7 +7,7 @@ async function getGenAI() {
 }
 
 // Check ai.google.dev for the current model lineup.
-const MODEL = 'gemini-2.5-flash';
+const MODEL = 'gemini-3.6-flash';
 
 let client = null;
 async function getClient() {
@@ -29,7 +29,7 @@ async function generateAnswer({ prompt, screenshotBase64, gameContext }) {
         role: 'user',
         parts: [
           { text: prompt },
-          { inlineData: { mimeType: 'image/png', data: screenshotBase64 } },
+          { inlineData: { mimeType: 'image/jpeg', data: screenshotBase64 } },
         ],
       },
     ],
